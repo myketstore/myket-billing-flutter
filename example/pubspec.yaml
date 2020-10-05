@@ -1,0 +1,42 @@
+name: myketiap_example
+description: Demonstrates how to use the myketiap plugin.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  myket_iap:
+    path: ../
+
+  cupertino_icons: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - buy_gas.png
+    - drive.png
+    - free.png
+    - gas0.png
+    - gas1.png
+    - gas2.png
+    - gas3.png
+    - gas4.png
+    - gas_inf.png
+    - get_infinite_gas.png
+    - ic_launcher.png
+    - manage_infinite_gas.png
+    - premium.png
+    - title.png
+    - upgrade_app.png
+    - wait.png
