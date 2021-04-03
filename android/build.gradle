@@ -32,6 +32,7 @@ android {
     }
     defaultConfig {
         minSdkVersion 16
+        consumerProguardFiles 'proguard-base.txt'
     }
     lintOptions {
         disable 'InvalidPackage'
