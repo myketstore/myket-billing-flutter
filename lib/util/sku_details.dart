@@ -1,13 +1,13 @@
 class SkuDetails {
-  String mItemType;
-  String mSku;
-  String mType;
-  String mPrice;
-  int mPriceAmountMicros;
-  String mPriceCurrencyCode;
-  String mTitle;
-  String mDescription;
-  String mJson;
+  late String mItemType;
+  late String mSku;
+  late String mType;
+  late String mPrice;
+  late int mPriceAmountMicros;
+  late String mPriceCurrencyCode;
+  late String mTitle;
+  String? mDescription;
+  late String mJson;
 
   SkuDetails();
 

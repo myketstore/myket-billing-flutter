@@ -1,8 +1,8 @@
 import 'package:myket_iap/util/constants.dart';
 
 class IabResult {
-  int mResponse;
-  String mMessage;
+  late int mResponse;
+  late String mMessage;
 
   IabResult();
 

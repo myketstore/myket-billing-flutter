@@ -2,8 +2,8 @@ import 'package:myket_iap/util/purchase.dart';
 import 'package:myket_iap/util/sku_details.dart';
 
 class Inventory {
-  Map<String, Purchase> mPurchaseMap;
-  Map<String, SkuDetails> mSkuMap;
+  Map<String, Purchase> mPurchaseMap = Map();
+  Map<String, SkuDetails> mSkuMap = Map();
 
   Inventory();
 

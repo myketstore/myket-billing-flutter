@@ -137,13 +137,15 @@ class _MainScreenState extends State<MainScreen> {
     try {
       // IAB is fully set up. Now, let's get an inventory of stuff we own.
       print("Setup successful. Querying inventory.");
-      var queryInventoryMap =
-          await MyketIAP.queryInventory(querySkuDetails: false);
-      IabResult inventoryResult = queryInventoryMap[MyketIAP.RESULT];
-      Inventory inventory = queryInventoryMap[MyketIAP.INVENTORY];
+      var queryInventoryMap = await MyketIAP.queryInventory();
+      // Check for sku details
+      // var queryInventoryMap =
+      //     await MyketIAP.queryInventory(querySkuDetails: true, skus: [SKU_GAS, SKU_PREMIUM]);
+      IabResult? inventoryResult = queryInventoryMap[MyketIAP.RESULT];
+      Inventory? inventory = queryInventoryMap[MyketIAP.INVENTORY];
       print("Query inventory finished.");
       // Is it a failure?
-      if (inventoryResult.isFailure()) {
+      if (true == inventoryResult?.isFailure()) {
         complain("Failed to query inventory: $inventoryResult");
         return;
       }
@@ -154,13 +156,13 @@ class _MainScreenState extends State<MainScreen> {
        * verifyDeveloperPayload().
        */
       // Do we have the premium upgrade?
-      Purchase premiumPurchase = inventory.mPurchaseMap[SKU_PREMIUM];
+      Purchase? premiumPurchase = inventory?.mPurchaseMap[SKU_PREMIUM];
       setState(() => _isPremium =
           (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase)));
       print("User is ${_isPremium ? "PREMIUM" : "NOT PREMIUM"}");
 
       // Check for gas delivery -- if we own gas, we should fill up the tank immediately
-      Purchase gasPurchase = inventory.mPurchaseMap[SKU_GAS];
+      Purchase? gasPurchase = inventory?.mPurchaseMap[SKU_GAS];
       if (gasPurchase != null && verifyDeveloperPayload(gasPurchase)) {
         print("We have gas. Consuming it.");
         await consumeGas(gasPurchase);
@@ -220,9 +222,9 @@ class _MainScreenState extends State<MainScreen> {
     try {
       var purchaseResultMap =
           await MyketIAP.launchPurchaseFlow(sku: SKU_PREMIUM, payload: payload);
-      IabResult purchaseResult = purchaseResultMap[MyketIAP.RESULT];
-      Purchase purchase = purchaseResultMap[MyketIAP.PURCHASE];
-      if (purchaseResult.isFailure()) {
+      IabResult? purchaseResult = purchaseResultMap[MyketIAP.RESULT];
+      Purchase? purchase = purchaseResultMap[MyketIAP.PURCHASE];
+      if (true == purchaseResult?.isFailure()) {
         complain("Error purchasing: $purchaseResult");
         setState(() => _loading = false);
         return;
@@ -269,9 +271,9 @@ class _MainScreenState extends State<MainScreen> {
     try {
       var purchaseResultMap =
           await MyketIAP.launchPurchaseFlow(sku: SKU_GAS, payload: payload);
-      IabResult purchaseResult = purchaseResultMap[MyketIAP.RESULT];
-      Purchase purchase = purchaseResultMap[MyketIAP.PURCHASE];
-      if (purchaseResult.isFailure()) {
+      IabResult? purchaseResult = purchaseResultMap[MyketIAP.RESULT];
+      Purchase? purchase = purchaseResultMap[MyketIAP.PURCHASE];
+      if (true == purchaseResult?.isFailure()) {
         complain("Error purchasing: $purchaseResult");
         setState(() => _loading = false);
         return;
@@ -279,6 +281,12 @@ class _MainScreenState extends State<MainScreen> {
 
       if (!verifyDeveloperPayload(purchase)) {
         complain("Error purchasing. Authenticity verification failed.");
+        setState(() => _loading = false);
+        return;
+      }
+
+      if (purchase == null){
+        complain("Error purchasing. Purchase is null.");
         setState(() => _loading = false);
         return;
       }
@@ -299,15 +307,15 @@ class _MainScreenState extends State<MainScreen> {
   Future consumeGas(Purchase purchase) async {
     try {
       var consumeResultMap = await MyketIAP.consume(purchase: purchase);
-      IabResult consumeResult = consumeResultMap[MyketIAP.RESULT];
-      Purchase consumePurchase = consumeResultMap[MyketIAP.PURCHASE];
+      IabResult? consumeResult = consumeResultMap[MyketIAP.RESULT];
+      Purchase? consumePurchase = consumeResultMap[MyketIAP.PURCHASE];
       print(
           "Consumption finished. Purchase: $consumePurchase, result: $consumeResult");
 
       // We know this is the "gas" sku because it's the only one we consume,
       // so we don't check which sku was consumed. If you have more than one
       // sku, you probably should check...
-      if (consumeResult.isSuccess()) {
+      if (true == consumeResult?.isSuccess()) {
         // successfully consumed, so we apply the effects of the item in our
         // game world's logic, which in our case means filling the gas tank a bit
         print("Consumption successful. Provisioning.");
@@ -354,8 +362,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   /// Verifies the developer payload of a purchase.
-  bool verifyDeveloperPayload(Purchase p) {
-    String payload = p.mDeveloperPayload;
+  bool verifyDeveloperPayload(Purchase? p) {
+    String payload = p?.mDeveloperPayload ?? "";
 
     /*
      * TODO: verify that the developer payload of the purchase is correct. It will be

@@ -1,15 +1,15 @@
 class Purchase {
-  String mItemType;
-  String mOrderId;
-  String mPackageName;
-  String mSku;
-  int mPurchaseTime;
-  int mPurchaseState;
-  String mDeveloperPayload;
-  String mToken;
-  String mOriginalJson;
-  String mSignature;
-  bool mIsAutoRenewing;
+  late String mItemType;
+  late String mOrderId;
+  late String mPackageName;
+  late String mSku;
+  late int mPurchaseTime;
+  late int mPurchaseState;
+  String? mDeveloperPayload;
+  late String mToken;
+  late String mOriginalJson;
+  late String mSignature;
+  late bool mIsAutoRenewing;
 
   factory Purchase.fromJson(dynamic json) => Purchase()
     ..mItemType = json['mItemType']

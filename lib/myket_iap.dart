@@ -13,8 +13,8 @@ class MyketIAP {
   static const String RESULT = "result";
   static const MethodChannel _channel = const MethodChannel('myket');
 
-  static Future<IabResult> init(
-      {String rsaKey, bool enableDebugLogging = false}) async {
+  static Future<IabResult?> init(
+      {required String rsaKey, bool enableDebugLogging = false}) async {
     var iabResult = await _channel.invokeMethod("init", <String, dynamic>{
       'rsa': rsaKey,
       'enableDebugLogging': enableDebugLogging,
@@ -23,7 +23,7 @@ class MyketIAP {
     return iabResultJson != null ? IabResult.fromJson(iabResultJson) : null;
   }
 
-  static Future<Map> launchPurchaseFlow({String sku, String payload}) async {
+  static Future<Map> launchPurchaseFlow({required String sku, String? payload}) async {
     var map =
         await _channel.invokeMethod("launchPurchaseFlow", <String, dynamic>{
       'sku': sku,
@@ -37,9 +37,9 @@ class MyketIAP {
     };
   }
 
-  static Future<Map> consume({Purchase purchase}) async {
+  static Future<Map> consume({required Purchase purchase}) async {
     var map = await _channel.invokeMethod("consume", <String, dynamic>{
-      'purchase': json.encode(purchase?.toJson()),
+      'purchase': json.encode(purchase.toJson()),
     });
     var purchaseJson = json.decode(map["purchase"]);
     var resultJson = json.decode(map["result"]);
@@ -50,7 +50,7 @@ class MyketIAP {
   }
 
   static Future<Map> getPurchase(
-      {String sku, bool querySkuDetails = false}) async {
+      {required String sku, bool querySkuDetails = false}) async {
     var map = await _channel.invokeMethod("getPurchase", <String, dynamic>{
       'sku': sku,
       'querySkuDetails': querySkuDetails,
@@ -67,9 +67,10 @@ class MyketIAP {
     return await _channel.invokeMethod("dispose");
   }
 
-  static Future<Map> queryInventory({bool querySkuDetails = false}) async {
+  static Future<Map> queryInventory({bool querySkuDetails = false, List<String>? skus}) async {
     var map = await _channel.invokeMethod("queryInventory", <String, dynamic>{
       'querySkuDetails': querySkuDetails,
+      'skus': skus
     });
     var purchaseJson = json.decode(map["inventory"]);
     var resultJson = json.decode(map["result"]);
