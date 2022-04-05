@@ -132,7 +132,7 @@ class MyketPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         activity = binding.activity
-        binding.addActivityResultListener { requestCode: Int, resultCode: Int, intent: Intent ->
+        binding.addActivityResultListener { requestCode: Int, resultCode: Int, intent: Intent? ->
             mHelper?.handleActivityResult(requestCode, resultCode, intent)
             true
         }

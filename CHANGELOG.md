@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix nonNull parameter
+
 ## 1.0.2
 
 * Migrate to mavenCentral
