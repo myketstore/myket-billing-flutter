@@ -202,7 +202,7 @@ class _MainScreenState extends State<MainScreen> {
         builder: (context) => AlertDialog(
               content: Text(message),
               actions: [
-                FlatButton(
+                MaterialButton(
                     onPressed: () => Navigator.of(context).pop(),
                     child: Text("OK"))
               ],
@@ -285,7 +285,7 @@ class _MainScreenState extends State<MainScreen> {
         return;
       }
 
-      if (purchase == null){
+      if (purchase == null) {
         complain("Error purchasing. Purchase is null.");
         setState(() => _loading = false);
         return;

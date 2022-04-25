@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Change nonNull parameters in plugin to nullable
+
 ## 1.0.3
 
 * Fix nonNull parameter

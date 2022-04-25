@@ -73,7 +73,7 @@ class MyketPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "launchPurchaseFlow" -> {
                 val sku = call.argument<String>("sku")
                 val payload = call.argument<String>("payload")
-                val onIabPurchaseFinishedListener = OnIabPurchaseFinishedListener { purchaseResult, purchase ->
+                val onIabPurchaseFinishedListener = OnIabPurchaseFinishedListener { purchaseResult: IabResult, purchase: Purchase? ->
                     result.success(mapOf("result" to gson.toJson(purchaseResult, IabResult::class.java),
                             "purchase" to gson.toJson(purchase, Purchase::class.java)))
                 }
@@ -81,7 +81,7 @@ class MyketPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             }
             "consume" -> {
                 val purchase = gson.fromJson(call.argument<String>("purchase"), Purchase::class.java)
-                mHelper?.consumeAsync(purchase) { p, consumeResult ->
+                mHelper?.consumeAsync(purchase) { p: Purchase?, consumeResult: IabResult ->
                     result.success(mapOf("result" to gson.toJson(consumeResult, IabResult::class.java),
                             "purchase" to gson.toJson(p, Purchase::class.java)))
                 }
@@ -90,8 +90,8 @@ class MyketPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val sku = call.argument<String>("sku")
                 val querySkuDetails = call.argument<Boolean>("querySkuDetails")
                 mHelper?.queryInventoryAsync(querySkuDetails == true, arrayListOf(sku))
-                { iabResult: IabResult, inventory: Inventory ->
-                    val purchase = inventory.getPurchase(sku)
+                { iabResult: IabResult, inventory: Inventory? ->
+                    val purchase = inventory?.getPurchase(sku)
                     result.success(mapOf("result" to gson.toJson(iabResult, IabResult::class.java),
                             "purchase" to gson.toJson(purchase, Purchase::class.java)))
                 }
@@ -100,7 +100,7 @@ class MyketPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val querySkuDetails = call.argument<Boolean>("querySkuDetails")
                 val skus = call.argument<List<String>>("skus")
                 mHelper?.queryInventoryAsync(querySkuDetails == true, skus)
-                { iabResult: IabResult, inventory: Inventory ->
+                { iabResult: IabResult, inventory: Inventory? ->
                     result.success(mapOf("result" to gson.toJson(iabResult, IabResult::class.java),
                             "inventory" to gson.toJson(inventory, Inventory::class.java)))
                 }

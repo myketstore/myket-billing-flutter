@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
@@ -23,7 +22,8 @@ class MyketIAP {
     return iabResultJson != null ? IabResult.fromJson(iabResultJson) : null;
   }
 
-  static Future<Map> launchPurchaseFlow({required String sku, String? payload}) async {
+  static Future<Map> launchPurchaseFlow(
+      {required String sku, String? payload}) async {
     var map =
         await _channel.invokeMethod("launchPurchaseFlow", <String, dynamic>{
       'sku': sku,
@@ -67,11 +67,10 @@ class MyketIAP {
     return await _channel.invokeMethod("dispose");
   }
 
-  static Future<Map> queryInventory({bool querySkuDetails = false, List<String>? skus}) async {
-    var map = await _channel.invokeMethod("queryInventory", <String, dynamic>{
-      'querySkuDetails': querySkuDetails,
-      'skus': skus
-    });
+  static Future<Map> queryInventory(
+      {bool querySkuDetails = false, List<String>? skus}) async {
+    var map = await _channel.invokeMethod("queryInventory",
+        <String, dynamic>{'querySkuDetails': querySkuDetails, 'skus': skus});
     var purchaseJson = json.decode(map["inventory"]);
     var resultJson = json.decode(map["result"]);
     return {

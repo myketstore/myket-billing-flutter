@@ -25,18 +25,18 @@ class Purchase {
     ..mIsAutoRenewing = json['mIsAutoRenewing'];
 
   Map<String, dynamic> toJson() => {
-    'mItemType':mItemType,
-    'mOrderId':mOrderId,
-    'mPackageName':mPackageName,
-    'mSku':mSku,
-    'mPurchaseTime':mPurchaseTime,
-    'mPurchaseState':mPurchaseState,
-    'mDeveloperPayload':mDeveloperPayload,
-    'mToken':mToken,
-    'mOriginalJson':mOriginalJson,
-    'mSignature':mSignature,
-    'mIsAutoRenewing':mIsAutoRenewing,
-  };
+        'mItemType': mItemType,
+        'mOrderId': mOrderId,
+        'mPackageName': mPackageName,
+        'mSku': mSku,
+        'mPurchaseTime': mPurchaseTime,
+        'mPurchaseState': mPurchaseState,
+        'mDeveloperPayload': mDeveloperPayload,
+        'mToken': mToken,
+        'mOriginalJson': mOriginalJson,
+        'mSignature': mSignature,
+        'mIsAutoRenewing': mIsAutoRenewing,
+      };
 
   Purchase();
 

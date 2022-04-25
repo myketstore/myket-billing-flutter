@@ -1,7 +1,7 @@
 name: myket_iap
-description: Myket IAP plugin for flutter
-version: 1.0.3
-homepage: https://myket.ir
+description: Myket In App Purchase plugin for flutter for android applications.
+version: 1.0.4
+homepage: https://www.myket.ir
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
