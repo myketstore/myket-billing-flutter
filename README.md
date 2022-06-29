@@ -14,6 +14,17 @@ Adding the ir.mservices.market.BILLING permission to your AndroidManifest.xml fi
 ```dart
 <uses-permission android:name="ir.mservices.market.BILLING" />
 ```
+If your `targetSdkVersion` is greater than 29, package visibility filtering is applied to your app. This means that if the project is not installed by Myket, it can no longer communicate with Myket.
+To solve this problem, just copy the following code snippet inside the `<manifest>` tag into the `AndroidManifest.xml` file
+```dart
+<queries>
+    <package android:name="ir.mservices.market" />
+    <intent>
+        <action android:name="ir.mservices.market.InAppBillingService.BIND" />
+        <data android:mimeType="*/*" />
+    </intent>
+</queries>
+```
 
 ### To Use myket iap plugin import below code to your class(your payment class)
 ```dart

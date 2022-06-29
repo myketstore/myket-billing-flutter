@@ -1,3 +1,9 @@
+## 1.0.5
+
+* Update build gradle
+* Update compile sdk version
+* Add queries to Manifest
+
 ## 1.0.4
 
 * Change nonNull parameters in plugin to nullable
