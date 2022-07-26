@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Remove deprecated api
+
 ## 1.0.5
 
 * Update build gradle

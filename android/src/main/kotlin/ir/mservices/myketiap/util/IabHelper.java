@@ -27,6 +27,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
@@ -662,7 +663,7 @@ public class IabHelper {
     public void queryInventoryAsync(final boolean querySkuDetails,
                                final List<String> moreSkus,
                                final QueryInventoryFinishedListener listener) {
-        final Handler handler = new Handler();
+        final Handler handler = new Handler(Looper.myLooper());
         checkNotDisposed();
         checkSetupDone("queryInventory");
         flagStartAsync("refresh inventory");
@@ -1000,7 +1001,7 @@ public class IabHelper {
     void consumeAsyncInternal(final List<Purchase> purchases,
                               final OnConsumeFinishedListener singleListener,
                               final OnConsumeMultiFinishedListener multiListener) {
-        final Handler handler = new Handler();
+        final Handler handler = new Handler(Looper.myLooper());
         flagStartAsync("consume");
         (new Thread(new Runnable() {
             public void run() {
