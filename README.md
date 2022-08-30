@@ -9,13 +9,13 @@ Myket In-App Purchase plugin android apps. This plugin is for android apps only.
 myket_iap: <Last Version>
 ```
 
-### Updating Your Application's Manifest
-Adding the ir.mservices.market.BILLING permission to your AndroidManifest.xml file for In-App Billing
+## Migrate from 1.0.6 to 1.1.0
+Remove Permission from Android Manifest.
 ```dart
 <uses-permission android:name="ir.mservices.market.BILLING" />
 ```
-If your `targetSdkVersion` is greater than 29, package visibility filtering is applied to your app. This means that if the project is not installed by Myket, it can no longer communicate with Myket.
-To solve this problem, just copy the following code snippet inside the `<manifest>` tag into the `AndroidManifest.xml` file
+
+Remove queries from Android Manifest.
 ```dart
 <queries>
     <package android:name="ir.mservices.market" />
@@ -25,6 +25,30 @@ To solve this problem, just copy the following code snippet inside the `<manifes
     </intent>
 </queries>
 ```
+
+Add gradle properties explained below.
+
+
+### Updating Your Application's Gradle
+Add this code snippet to your `build.gradle` defaultConfig:
+```groovy
+android {
+    defaultConfig {
+        def marketApplicationId = "ir.mservices.market"
+        def marketBindAddress = "ir.mservices.market.InAppBillingService.BIND"
+        manifestPlaceholders += [marketApplicationId: "${marketApplicationId}",
+                marketBindAddress  : "${marketBindAddress}",
+                marketPermission   : "${marketApplicationId}.BILLING"]
+    }
+    ...
+}
+```
+
+
+### Multiple Store
+Myket Iap can support multiple store. For using this feature, use flavor in your gradle file and in your flutter.
+For more information about flavors in flutter read [this document](https://cogitas.net/creating-flavors-of-a-flutter-app/).
+
 
 ### To Use myket iap plugin import below code to your class(your payment class)
 ```dart
@@ -63,7 +87,7 @@ The result will be a map containing `MyketIAP.RESULT` as IabResult object, and `
 Map<String, dynamic> result = await MyketIAP.getPurchase(sku: "gas", querySkuDetails: false);
 ```
 1. `sku` : your product id on Myket (created in myket developer panel)
-2. `querySkuDetails' : if true, SKU details (price, description, etc) will be queried as well as purchase information.
+2. `querySkuDetails` : if true, SKU details (price, description, etc) will be queried as well as purchase information.
 
 The result will be a map containing `MyketIAP.RESULT` as IabResult object, and `MyketIAP.PURCHASE` as consumed Purchase object.
 
@@ -72,7 +96,7 @@ This will query all owned items from the server, as well as information on addit
 ```dart
 Map<String, dynamic> result = await MyketIAP.queryInventory(querySkuDetails: false);
 ```
-1. `querySkuDetails' : if true, SKU details (price, description, etc) will be queried as well as purchase information.
+1. `querySkuDetails` : if true, SKU details (price, description, etc) will be queried as well as purchase information.
 
 The result will be a map containing `MyketIAP.RESULT` as IabResult object, and `MyketIAP.INVENTORY` as Inventory object.
 
@@ -81,3 +105,4 @@ Dispose of object, releasing resources. It's very important to call this method 
 ```dart
 await MyketIAP.dispose();
 ```
+

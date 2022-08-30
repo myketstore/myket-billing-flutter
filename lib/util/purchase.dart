@@ -9,7 +9,6 @@ class Purchase {
   late String mToken;
   late String mOriginalJson;
   late String mSignature;
-  late bool mIsAutoRenewing;
 
   factory Purchase.fromJson(dynamic json) => Purchase()
     ..mItemType = json['mItemType']
@@ -21,8 +20,7 @@ class Purchase {
     ..mDeveloperPayload = json['mDeveloperPayload']
     ..mToken = json['mToken']
     ..mOriginalJson = json['mOriginalJson']
-    ..mSignature = json['mSignature']
-    ..mIsAutoRenewing = json['mIsAutoRenewing'];
+    ..mSignature = json['mSignature'];
 
   Map<String, dynamic> toJson() => {
         'mItemType': mItemType,
@@ -35,13 +33,12 @@ class Purchase {
         'mToken': mToken,
         'mOriginalJson': mOriginalJson,
         'mSignature': mSignature,
-        'mIsAutoRenewing': mIsAutoRenewing,
       };
 
   Purchase();
 
   @override
   String toString() {
-    return 'Purchase{mItemType: $mItemType, mOrderId: $mOrderId, mPackageName: $mPackageName, mSku: $mSku, mPurchaseTime: $mPurchaseTime, mPurchaseState: $mPurchaseState, mDeveloperPayload: $mDeveloperPayload, mToken: $mToken, mOriginalJson: $mOriginalJson, mSignature: $mSignature, mIsAutoRenewing: $mIsAutoRenewing}';
+    return 'Purchase{mItemType: $mItemType, mOrderId: $mOrderId, mPackageName: $mPackageName, mSku: $mSku, mPurchaseTime: $mPurchaseTime, mPurchaseState: $mPurchaseState, mDeveloperPayload: $mDeveloperPayload, mToken: $mToken, mOriginalJson: $mOriginalJson, mSignature: $mSignature}';
   }
 }

@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Update myket plugin
+
 ## 1.0.6
 
 * Remove deprecated api

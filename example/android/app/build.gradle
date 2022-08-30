@@ -43,6 +43,11 @@ android {
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        def marketApplicationId = "ir.mservices.market"
+        def marketBindAddress = "ir.mservices.market.InAppBillingService.BIND"
+        manifestPlaceholders += [marketApplicationId: "${marketApplicationId}",
+                                 marketBindAddress  : "${marketBindAddress}",
+                                 marketPermission   : "${marketApplicationId}.BILLING"]
     }
 
     buildTypes {
