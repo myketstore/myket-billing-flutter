@@ -1,6 +1,6 @@
 -keepattributes Signature
 
--keep class ir.mservices.myketiap.** { *; }
+-keep class ir.myket.billingclient.** { *; }
 
 ##------------------------------ Begin: Gson ------------------------------
 ## See https://github.com/google/gson/blob/master/examples/android-proguard-example/proguard.cfg

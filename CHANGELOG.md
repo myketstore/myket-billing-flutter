@@ -1,8 +1,12 @@
-## 1.1.1
+## 1.1.2
 
 * Update flutter sdk
 * Update android compile version
 * Update gradle
+
+## 1.1.1
+
+* Update proguard rule
 
 ## 1.1.0
 
