@@ -1,3 +1,9 @@
+## 1.1.1
+
+* Update flutter sdk
+* Update android compile version
+* Update gradle
+
 ## 1.1.0
 
 * Update myket plugin
