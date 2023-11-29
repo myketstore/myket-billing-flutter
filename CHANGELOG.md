@@ -1,3 +1,8 @@
+## 1.1.3
+
+* Update kotlin to version 1.9.10
+* Update gradle to 8.0
+
 ## 1.1.2
 
 * Update flutter sdk
