@@ -40,9 +40,15 @@ android {
                 marketBindAddress  : "${marketBindAddress}",
                 marketPermission   : "${marketApplicationId}.BILLING"]
     }
+
+    compileOptions {
+        sourceCompatibility 17
+        targetCompatibility 17
+    }
     ...
 }
 ```
+Make sure you are using kotlin >= 1.9.10 and java 17
 
 
 ### Multiple Store

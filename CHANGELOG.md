@@ -1,3 +1,7 @@
+## 1.1.4
+
+* Update readme
+
 ## 1.1.3
 
 * Update kotlin to version 1.9.10
