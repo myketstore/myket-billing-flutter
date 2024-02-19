@@ -1,3 +1,7 @@
+## 1.1.5
+
+* Update billing library
+
 ## 1.1.4
 
 * Update readme
