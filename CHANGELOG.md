@@ -1,3 +1,8 @@
+## 1.1.6
+
+* Migrate from deprecated imperative apply of Flutter's gradle 
+* Update gradle to 8.6
+
 ## 1.1.5
 
 * Update billing library
