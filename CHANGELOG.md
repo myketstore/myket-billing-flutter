@@ -1,3 +1,7 @@
+## 1.1.8
+
+* Update README.md
+
 ## 1.1.7
 
 * Migrate from deprecated imperative apply of Flutter's gradle 
