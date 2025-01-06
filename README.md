@@ -47,7 +47,7 @@ android {
     ...
 }
 ```
-Make sure you are using kotlin >= 1.9.10 and java 17
+Make sure you are using kotlin >= 1.9.20 and java 21
 
 
 ### Multiple Store
