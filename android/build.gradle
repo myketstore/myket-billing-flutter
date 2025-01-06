@@ -17,6 +17,7 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        maven { url 'https://maven.myket.ir' }
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
@@ -47,5 +48,5 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'com.github.myketstore:myket-billing-client:1.7'
+    implementation 'com.github.myketstore:myket-billing-client:1.15'
 }
