@@ -41,10 +41,9 @@ android {
                 marketPermission   : "${marketApplicationId}.BILLING"]
     }
 
-    compileOptions {
-        sourceCompatibility 17
-        targetCompatibility 17
-    }
+	kotlin {
+		jvmToolchain(21)
+	}
     ...
 }
 ```

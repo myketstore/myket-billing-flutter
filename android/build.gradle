@@ -2,7 +2,7 @@ group 'ir.mservices.myketiap'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.10'
+    ext.kotlin_version = '1.9.20'
     repositories {
         google()
         mavenCentral()
@@ -39,9 +39,8 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-    compileOptions {
-        sourceCompatibility 17
-        targetCompatibility 17
+    kotlin {
+        jvmToolchain(21)
     }
 }
 
