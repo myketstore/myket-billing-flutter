@@ -1,3 +1,13 @@
+## 1.1.7
+
+* Migrate from deprecated imperative apply of Flutter's gradle 
+* Update gradle to 8.9
+* Update JvmToolchain to 21
+* Update Kotlin version to 1.9.20
+* Update CompileSdkVersion to 34
+* Update myket-billing-client to 1.15
+* Add maven.myket.ir
+
 ## 1.1.6
 
 * Migrate from deprecated imperative apply of Flutter's gradle 
