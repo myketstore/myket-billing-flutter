@@ -3,8 +3,6 @@ class SkuDetails {
   late String mSku;
   late String mType;
   late String mPrice;
-  late int mPriceAmountMicros;
-  late String mPriceCurrencyCode;
   late String mTitle;
   String? mDescription;
   late String mJson;
@@ -16,8 +14,6 @@ class SkuDetails {
     ..mSku = json['mSku']
     ..mType = json['mType']
     ..mPrice = json['mPrice']
-    ..mPriceAmountMicros = json['mPriceAmountMicros']
-    ..mPriceCurrencyCode = json['mPriceCurrencyCode']
     ..mTitle = json['mTitle']
     ..mDescription = json['mDescription']
     ..mJson = json['mJson'];
@@ -27,8 +23,6 @@ class SkuDetails {
         'mSku': mSku,
         'mType': mType,
         'mPrice': mPrice,
-        'mPriceAmountMicros': mPriceAmountMicros,
-        'mPriceCurrencyCode': mPriceCurrencyCode,
         'mTitle': mTitle,
         'mDescription': mDescription,
         'mJson': mJson,
