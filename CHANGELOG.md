@@ -1,3 +1,8 @@
+## 1.1.9
+
+* Remove unused properties in SkuDetails
+* Add querySkuDetails in queryInventory to example
+
 ## 1.1.8
 
 * Update README.md
