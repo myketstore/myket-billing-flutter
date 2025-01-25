@@ -3,6 +3,7 @@ import 'package:myket_iap/myket_iap.dart';
 import 'package:myket_iap/util/iab_result.dart';
 import 'package:myket_iap/util/inventory.dart';
 import 'package:myket_iap/util/purchase.dart';
+import 'package:myket_iap/util/sku_details.dart';
 
 void main() {
   runApp(MyApp());
@@ -137,7 +138,8 @@ class _MainScreenState extends State<MainScreen> {
     try {
       // IAB is fully set up. Now, let's get an inventory of stuff we own.
       print("Setup successful. Querying inventory.");
-      var queryInventoryMap = await MyketIAP.queryInventory();
+      var queryInventoryMap = await MyketIAP.queryInventory(
+          querySkuDetails: true, skus: [SKU_GAS, SKU_PREMIUM]);
       // Check for sku details
       // var queryInventoryMap =
       //     await MyketIAP.queryInventory(querySkuDetails: true, skus: [SKU_GAS, SKU_PREMIUM]);
