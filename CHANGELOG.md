@@ -1,3 +1,7 @@
+## 1.1.10
+
+* Update billing library to 1.17
+
 ## 1.1.9
 
 * Remove unused properties in SkuDetails
