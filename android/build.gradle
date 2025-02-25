@@ -4,6 +4,7 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlin_version = '1.9.20'
     repositories {
+        maven { url 'https://maven.myket.ir' }
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
@@ -48,5 +49,5 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'com.github.myketstore:myket-billing-client:1.17'
+    implementation 'com.github.myketstore:myket-billing-client:1.18'
 }
