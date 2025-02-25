@@ -1,3 +1,8 @@
+## 1.1.11
+
+* Update billing library to 1.18
+* Remove deprecated registerWith from plugin
+
 ## 1.1.10
 
 * Update billing library to 1.17
